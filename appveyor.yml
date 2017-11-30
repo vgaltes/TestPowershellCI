@@ -80,7 +80,7 @@ artifacts:
     # FTP deployment provider settings
     # Deploy to GitHub Releases
   - provider: GitHub
-    artifact: /*           # upload all NuGet packages to release assets
+    artifact: *           # upload all NuGet packages to release assets
     draft: false
     prerelease: false
     on:
