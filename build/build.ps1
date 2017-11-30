@@ -27,11 +27,16 @@ Task RestoreTools {
 }
 
 Task UnitTest {
+	Write-Host "1"
+	Remove-Module [p]ester
 	Import-Module "$PSScriptRoot\tools\Pester\tools\Pester.psm1" -Force -Global # See https://github.com/pester/Pester/issues/576
+	Write-Host "2"
 
 	if ( $isCiServer ){
+		Write-Host "hello CI"
 		Invoke-Pester "$srcFolder" -OutputFile "$artifactFolder\pester.xml"  -OutputFormat NUnitXml
 	} else {
+		Write-Host "hello"
 		Invoke-Pester "$srcFolder"
 	}
 }
