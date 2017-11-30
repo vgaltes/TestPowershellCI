@@ -75,12 +75,12 @@ artifacts:
 
 # providers: Local, FTP, WebDeploy, AzureCS, AzureBlob, S3, NuGet, Environment
 # provider names are case-sensitive!
-#deploy:
+deploy:
 
     # FTP deployment provider settings
     # Deploy to GitHub Releases
   - provider: GitHub
-    artifact: *           # upload all NuGet packages to release assets
+    artifact: /*.*           # upload all NuGet packages to release assets
     draft: false
     prerelease: false
     on:
