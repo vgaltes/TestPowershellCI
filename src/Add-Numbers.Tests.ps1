@@ -4,7 +4,7 @@ $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 Describe -Tags "Example" "Add-Numbers" {
 
     It "adds positive numbers" {
-        Add-Numbers 2 3 | Should -Be 5
+        Add-Numbers 2 3 | Should -Be 6
     }
 
     It "adds negative numbers" {
