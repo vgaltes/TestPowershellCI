@@ -1,0 +1,92 @@
+
+
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# version format
+version: 2.1.{build}
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# Build worker image (VM template)
+image: Visual Studio 2013
+
+# clone directory
+#clone_folder: c:\projects\myproject
+
+# environment variables
+#environment:
+  # my_var1: value1
+  # my_var2: value2
+  # this is how to set encrypted variable. Go to "Encrypt data" page in account menu to encrypt data.
+  # my_secure_var1:
+  #   secure: FW3tJ3fMncxvs58/ifSP7w==
+
+# environment:
+#  global:
+#    connection_string: server=12;password=13;
+#    service_url: https://127.0.0.1:8090
+#
+#  matrix:
+#  - db: mysql
+#    provider: mysql
+#
+#  - db: mssql
+#    provider: mssql
+#    password:
+#      secure: $#(JFDA)jQ@#$
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+
+# to run your custom scripts instead of automatic MSBuild
+build_script: RunBuild.cmd
+
+# to disable automatic builds
+#build: off
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+artifacts:
+
+  # pushing a single file
+  - path: src\Add-Numbers.ps1
+
+  # pushing a single file with environment variable in path and "Deployment name" specified
+  #- path: MyProject\bin\$(configuration)
+  #  name: myapp
+
+  # pushing entire folder as a zip archive
+  #- path: logs
+
+  # pushing all *.nupkg files in build directory recursively
+  #- path: '**\*.nupkg'
+
+
+#---------------------------------#
+#     deployment configuration    #
+#---------------------------------#
+
+# providers: Local, FTP, WebDeploy, AzureCS, AzureBlob, S3, NuGet, Environment
+# provider names are case-sensitive!
+#deploy:
+
+    # FTP deployment provider settings
+    # Deploy to GitHub Releases
+  - provider: GitHub
+    artifact: /*           # upload all NuGet packages to release assets
+    draft: false
+    prerelease: false
+    on:
+      branch: master                # release from master branch only
+      appveyor_repo_tag: true       # deploy on tag push only
+
+# to disable deployment
+#deploy: off
+
