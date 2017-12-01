@@ -83,6 +83,8 @@ deploy:
     artifact: /*.*           # upload all NuGet packages to release assets
     draft: false
     prerelease: false
+    auth_token:
+      secure: e9074NFTq44OByRx/V8EJgkZtEG4WN1pEZ6JVN0hQr5EesQROWoJv2OscsNBZCgm
     on:
       # branch: master                # release from master branch only
       appveyor_repo_tag: true       # deploy on tag push only
