@@ -57,6 +57,7 @@ artifacts:
 
   # pushing a single file
   - path: src\Add-Numbers.ps1
+    name: thescript
 
   # pushing a single file with environment variable in path and "Deployment name" specified
   #- path: MyProject\bin\$(configuration)
@@ -80,7 +81,7 @@ deploy:
     # FTP deployment provider settings
     # Deploy to GitHub Releases
   - provider: GitHub
-    artifact: /*.*           # upload all NuGet packages to release assets
+    artifact: thescript           # upload all NuGet packages to release assets
     draft: false
     prerelease: false
     auth_token:
